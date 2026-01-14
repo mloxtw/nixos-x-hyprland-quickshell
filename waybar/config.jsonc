@@ -9,8 +9,8 @@
     "modules-right": ["pulseaudio", "network", "cpu", "memory", "battery", "tray" , "custom/wlogout"],
 
 "custom/nix-logo": {
-    "exec": "echo 'dummy'",     // Just a placeholder to keep the module active
-    "interval": 1,              // How fast it "spins" (1 second)
+    "exec": "echo 'dummy'",    
+    "interval": 1,              
     "format": "{icon}",
     "format-icons": [
         "󱄅", // Frame 1

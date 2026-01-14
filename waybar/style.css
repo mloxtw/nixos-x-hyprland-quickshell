@@ -1,0 +1,82 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "Ubuntu", "Segoe UI", sans-serif;
+    font-size: 14px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: rgba(46, 52, 64, 0.9); /* nord0 */
+    border-bottom: 3px solid rgba(136, 192, 208, 0.5); /* nord8 */
+    color: #eceff4; /* nord6 */
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+#modules-left, #modules-center, #modules-right {
+    padding: 0 10px;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    background-color: transparent;
+    color: #d8dee9;
+    border-bottom: 3px solid transparent;
+}
+
+#workspaces button.focused {
+    color: #88c0d0; /* nord8 */
+    border-bottom: 3px solid #88c0d0;
+}
+
+#workspaces button:hover {
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow: inherit;
+    text-shadow: inherit;
+}
+
+#clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-media, #tray, #mode {
+    padding: 0 10px;
+    margin: 0 2px;
+}
+
+/* Individual Module Colors */
+#clock { color: #81a1c1; }      /* nord9 */
+#battery { color: #a3be8c; }    /* nord14 */
+#battery.charging { color: #b48ead; }
+#battery.critical:not(.charging) {
+    color: #bf616a;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#cpu { color: #5e81ac; }        /* nord10 */
+#memory { color: #b48ead; }     /* nord15 */
+#network { color: #d8dee9; }
+#pulseaudio { color: #ebcb8b; } /* nord13 */
+
+@keyframes blink {
+    to { background-color: #bf616a; color: #eceff4; }
+}
+#custom-nix-logo {
+    color: #5277C3;
+    font-size: 20px;
+    padding: 0 10px;
+    /* This creates a "breathing" effect instead of a spin */
+    animation: nix-pulse 4s infinite alternate;
+}
+
+@keyframes nix-pulse {
+    from {
+        color: #5277C3;
+        text-shadow: 0 0 0px rgba(82, 119, 195, 0);
+    }
+    to {
+        color: #7ebae4;
+        text-shadow: 0 0 8px rgba(126, 186, 228, 0.8);
+    }
+}

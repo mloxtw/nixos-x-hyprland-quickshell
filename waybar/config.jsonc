@@ -1,0 +1,85 @@
+
+{
+    "layer": "top",
+    "position": "top",
+    "height": 34,
+    "spacing": 4,
+    "modules-left": ["custom/nix-logo", "hyprland/workspaces", "hyprland/mode"],
+    "modules-center": ["clock"],
+    "modules-right": ["pulseaudio", "network", "cpu", "memory", "battery", "tray" , "custom/wlogout"],
+
+"custom/nix-logo": {
+    "exec": "echo 'dummy'",     // Just a placeholder to keep the module active
+    "interval": 1,              // How fast it "spins" (1 second)
+    "format": "{icon}",
+    "format-icons": [
+        "󱄅", // Frame 1
+        "󰖪", // Frame 2
+        "󱄅", // Frame 3 (Rotate these as needed)
+        "󰖪"  // Frame 4
+    ],
+    "on-click": "qs -p ~/.config/quickshell/menu.qml",
+    "tooltip": false
+},
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "{name}"
+    },
+
+"custom/wlogout": {
+	"format": "󰍃",
+	"on-click": "wlogout -b 4",
+	"tooltip": false
+}, 
+	
+
+    "tray": {
+        "spacing": 5
+    },
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": " {:%H:%M}",
+        "format-alt": " {:%A, %B %d, %Y}"
+    },
+    "cpu": {
+        "format": " {usage}%",
+        "tooltip": false
+    },
+    "memory": {
+        "format": " {}%"
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{icon} {time}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "network": {
+        "format-wifi": " {essid}",
+        "format-ethernet": " {ifname}",
+        "format-linked": " {ifname} (No IP)",
+        "format-disconnected": "⚠ Disconnected",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+	"on-click": "nmtui"
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": " Muted",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    }
+}

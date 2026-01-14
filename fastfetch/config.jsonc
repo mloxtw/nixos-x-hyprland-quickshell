@@ -1,7 +1,7 @@
 {
     "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
     "logo": {
-        "source": "/home/mlox/.config/fastfetch/ascii/star.txt", // CHANGE THIS PATH
+        "source": "/home/mlox/.config/fastfetch/ascii/star.txt", // CHANGE THIS PATH IF U HAVE OTHER ASCII ARTS U WANNA PUT.
         "type": "auto",
         "width": 35,
         "height": 18,

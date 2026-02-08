@@ -1,0 +1,105 @@
+#!/bin/bash
+
+THEME="$1"
+THEMES_DIR="$HOME/.config/themes"
+
+if [ -z "$THEME" ]; then
+    echo "Usage: theme-apply <theme-name>"
+    exit 1
+fi
+
+echo "=========================================="
+echo "Applying theme: $THEME"
+echo "=========================================="
+
+# WAYBAR
+echo ""
+echo "[WAYBAR]"
+WAYBAR_THEME="$THEMES_DIR/waybar/$THEME/style.css"
+WAYBAR_TARGET="$HOME/.config/waybar/style.css"
+
+if [ -f "$WAYBAR_THEME" ]; then
+    # Remove old file/symlink completely
+    rm -f "$WAYBAR_TARGET"
+    # Create fresh symlink
+    ln -s "$WAYBAR_THEME" "$WAYBAR_TARGET"
+    echo "  ✓ Linked: $WAYBAR_TARGET -> $WAYBAR_THEME"
+    
+    # Kill ALL waybar processes
+    pkill waybar 2>/dev/null
+    sleep 0.5
+    # Start new waybar
+    waybar &
+    echo "  ✓ Waybar restarted"
+else
+    echo "  ✗ Theme not found: $WAYBAR_THEME"
+fi
+
+# ROFI
+echo ""
+echo "[ROFI]"
+ROFI_THEME="$THEMES_DIR/rofi/$THEME.rasi"
+ROFI_TARGET="$HOME/.config/rofi/current-theme.rasi"
+
+if [ -f "$ROFI_THEME" ]; then
+    rm -f "$ROFI_TARGET"
+    ln -s "$ROFI_THEME" "$ROFI_TARGET"
+    echo "  ✓ Linked: $ROFI_TARGET -> $ROFI_THEME"
+else
+    echo "  ✗ Theme not found: $ROFI_THEME"
+fi
+
+# KITTY
+echo ""
+echo "[KITTY]"
+KITTY_THEME="$THEMES_DIR/kitty/$THEME.conf"
+KITTY_TARGET="$HOME/.config/kitty/current-theme.conf"
+
+if [ -f "$KITTY_THEME" ]; then
+    rm -f "$KITTY_TARGET"
+    ln -s "$KITTY_THEME" "$KITTY_TARGET"
+    pkill -SIGUSR1 kitty 2>/dev/null
+    echo "  ✓ Linked and reloaded: $KITTY_TARGET -> $KITTY_THEME"
+else
+    echo "  ✗ Theme not found: $KITTY_THEME"
+fi
+
+# WALLPAPER
+echo ""
+echo "[WALLPAPER]"
+WALLPAPER="$THEMES_DIR/wallpapers/$THEME.jpg"
+
+if [ -f "$WALLPAPER" ]; then
+    swww img "$WALLPAPER"
+    echo "  ✓ Wallpaper set: $WALLPAPER"
+else
+    echo "  ✗ Wallpaper not found: $WALLPAPER"
+fi
+
+# FASTFETCH
+echo ""
+echo "[FASTFETCH]"
+FASTFETCH_THEME="$THEMES_DIR/fastfetch/$THEME.jsonc"
+FASTFETCH_TARGET="$HOME/.config/fastfetch/config.jsonc"
+
+if [ -f "$FASTFETCH_THEME" ]; then
+    rm -f "$FASTFETCH_TARGET"
+    ln -s "$FASTFETCH_THEME" "$FASTFETCH_TARGET"
+    echo "  ✓ Linked: $FASTFETCH_TARGET -> $FASTFETCH_THEME"
+    echo ""
+    echo "Running fastfetch with new theme..."
+    echo ""
+    fastfetch
+else
+    echo "  ✗ Theme not found: $FASTFETCH_THEME"
+    echo "  ℹ Running fastfetch anyway..."
+    echo ""
+    fastfetch
+fi
+
+# Save current theme
+echo ""
+echo "$THEME" > ~/.cache/current-theme
+echo "=========================================="
+echo "✓ Theme '$THEME' applied successfully!"
+echo "=========================================="

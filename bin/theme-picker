@@ -1,0 +1,3 @@
+#!/bin/bash
+THEME=$(echo -e "catppuccin-mocha\nnord\ngruvbox\ndracula\ntokyo-night\nmonochrome\napple" | rofi -dmenu -p "Select Theme")
+[ -n "$THEME" ] && bash $HOME/.local/bin/theme-apply "$THEME"

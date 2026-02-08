@@ -1,0 +1,30 @@
+#nord
+# --- Window Layout ---
+
+window_padding_width 15
+
+# --- Transparency & Blur ---
+# 0.0 is fully transparent, 1.0 is fully opaque
+background_opacity 0.7
+
+# This works natively on macOS and some Linux compositors
+background_blur 100
+
+
+# --- Aesthetic Tweaks ---
+# Removes the title bar for a cleaner look (macOS/Linux)
+hide_window_decorations yes
+
+# Cursor customization
+cursor_shape beam
+cursor_blink_interval 0.5
+# -- Why he be askin if i wanna close the window?--
+confirm_os_window_close 0
+# -- font--
+font_family MesloLGS NF
+
+
+# BEGIN_KITTY_THEME
+# Adapta Nokto Maia
+include current-theme.conf
+# END_KITTY_THEME

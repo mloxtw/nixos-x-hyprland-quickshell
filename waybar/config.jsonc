@@ -1,0 +1,98 @@
+{
+    // Example Waybar config with icons disabled
+    // Save this as ~/.config/waybar/config.jsonc
+    
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "spacing": 4,
+    
+    "modules-left": ["custom/nix-logo", "hyprland/workspaces", "custom/media" ],
+    "modules-center": ["clock"],
+    "modules-right": [ "pulseaudio", "network", "cpu", "memory", "battery"],
+    
+    "hyprland/workspaces": {
+        "format": "{name}",
+        "on-click": "activate"
+    },
+    
+    "clock": {
+        "format": "{:%H:%M}",
+        "format-alt": "{:%Y-%m-%d}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "year",
+            "mode-mon-col": 3,
+            "format": {
+                "months": "<span color='#ffead3'><b>{}</b></span>",
+                "days": "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        }
+    },
+    
+    "battery": {
+        "format": "{capacity}%",
+        "format-charging": "{capacity}%",
+        "format-plugged": "{capacity}%",
+        "format-alt": "{time}",
+        "states": {
+            "warning": 30,
+            "critical": 15
+        }
+    },
+    
+    "cpu": {
+        "format": "CPU {usage}%",
+        "tooltip": false
+    },
+    
+    "memory": {
+        "format": "RAM {}%"
+    },
+    
+    "network": {
+        "format-wifi": "{essid}",
+        "format-ethernet": "Connected",
+        "format-disconnected": "Disconnected",
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+        "tooltip-format-ethernet": "{ifname}",
+        "tooltip-format-disconnected": "Disconnected"
+    },
+    
+    "pulseaudio": {
+        "format": "{volume}%",
+        "format-muted": "Muted",
+        "on-click": "pavucontrol"
+    },
+    
+    "custom/nix-logo": {
+        "exec": "echo 'dummy'",
+        "interval": 1,
+        "format": "{icon}",
+        "format-icons": [
+            "󱄅",
+            "󰖪",
+            "󱄅",
+            "󰖪"
+        ],
+        "on-click": "qs -p ~/.config/quickshell/menu.qml",
+        "tooltip": false
+    },
+
+"custom/media": {
+    "format": "{icon} {}",
+    "return-type": "json",
+    "format-icons": {
+        "Playing": "▶",
+        "Paused": "⏸"
+    },
+    "max-length": 40,
+    "exec": "playerctl metadata --format '{\"text\": \"{{artist}} - {{title}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+    "on-click": "playerctl play-pause"
+  }
+}
+

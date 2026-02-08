@@ -1,0 +1,104 @@
+/*******************************************************************************
+ * MACOS SPOTLIGHT-LIKE THEME FOR ROFI 
+ * User: Gemini
+ * * Instructions:
+ * - Place this file in ~/.config/rofi/macos.rasi
+ *******************************************************************************/
+
+* {
+    /* Dracula-ish Dark theme with Transparency */
+    /* format: #RRGGBBAA (AA = Alpha/Opacity) */
+    
+    bg-col:  #FFFFFF00;   /* Dark background with 80% opacity */
+    bg-col-light: #1e1e2e; /* Solid background for input */
+    border-col: #1e1e2e;
+    selected-col: #1e1e2e;
+    blue: #89b4fa;
+    fg-col: #cdd6f4;
+    fg-col2: #f38ba8;
+    grey: #6c7086;
+
+    width: 600;
+    font: "Inter bold 12";
+}
+
+element-text, element-icon , mode-switcher {
+    background-color: inherit;
+    text-color:       inherit;
+}
+
+window {
+    height: 600px;
+    border: 10px; /* MacOS doesn't usually have a thick border */
+    //border-radius: 10px; /* The rounded MacOS look */
+    background-color: #FFFFFF1A;
+    transparency: "real"; /* Required for transparency */
+}
+
+mainbox {
+    background-color: transparent;
+}
+
+inputbar {
+    children: [entry];
+    background-color: transparent;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+
+textbox-prompt-colon {
+    expand: false;
+    str: ":";
+}
+
+entry {
+    padding: 6px;
+    margin: 20px 0px 0px 10px;
+    text-color: @fg-col;
+    background-color: transparent;
+    placeholder-color: @grey;
+}
+
+listview {
+    border: 0px 0px 0px;
+    padding: 6px 0px 0px;
+    margin: 10px 0px 0px 20px;
+    columns: 1;
+    lines: 5;
+    background-color: transparent;
+}
+
+element {
+    padding: 8px;
+    background-color: transparent;
+    text-color: @fg-col;
+}
+
+element-icon {
+    size: 25px;
+}
+
+element selected {
+    background-color:  @grey; /* Highlight color */
+    text-color: @fg-col;
+    border-radius: 6px;       /* Rounded highlight */
+    opacity: 0.5;
+}
+
+mode-switcher {
+    spacing: 0;
+}
+
+button {
+    padding: 10px;
+    background-color: @bg-col-light;
+    text-color: @grey;
+    vertical-align: 0.5; 
+    horizontal-align: 0.5;
+}
+
+button selected {
+    background-color: @bg-col;
+    text-color: @blue;
+}

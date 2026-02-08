@@ -1,0 +1,98 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "Ubuntu", "Segoe UI", sans-serif;
+    font-size: 14px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: rgba(46, 52, 64, 1); /* vibrant peachy orange */
+    border-bottom: 3px solid rgba(159, 204, 217, 1); /* bright coral orange */
+    color: #9c0909; /* dark brown text */
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+#modules-left, #modules-center, #modules-right {
+    padding: 0 10px;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    background-color: transparent;
+    color: #C3DFE7;
+    border-bottom: 3px solid transparent;
+}
+
+#workspaces button.focused {
+    color: #ff8c69; /* bright peachy orange */
+    border-bottom: 3px solid #ff8c69;
+}
+
+#workspaces button:hover {
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow: inherit;
+    text-shadow: inherit;
+}
+
+#clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-media, #tray, #mode {
+    padding: 0 10px;
+    margin: 0 2px;
+}
+
+/* Individual Module Colors */
+#clock { color: #88c0d0; }      /* bright sky blue */
+#battery { color: #88c0d0; }    /* vibrant mint green */
+#battery.charging { color: #88c0d0; }
+#battery.critical:not(.charging) {
+    color: #88c0d0;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#cpu { color: #88c0d0; }        /* bright yellow */
+#memory { color: #88c0d0; }     /* vibrant lavender */
+#network { color: #88c0d0; }
+#pulseaudio { color: #88c0d0; } /* bright orange */
+
+@keyframes blink {
+    to { background-color: #ff8c69; color: #ffffff; }
+}
+#custom-nix-logo {
+    color: #88c0d0;
+    font-size: 20px;
+    padding: 0 10px;
+    /* This creates a "breathing" effect instead of a spin */
+    animation: nix-pulse 4s infinite alternate;
+}
+
+@keyframes nix-pulse {
+    from {
+        color: #88c0d0;
+        text-shadow: 0 0 0px rgba(255, 140, 105, 0);
+    }
+    to {
+        color: #697d97;
+        text-shadow: 0 0 8px rgba(41, 88, 174, 0.8);
+    }
+}
+
+#custom-media {
+    background-color: #1e1e2e;
+    color: #cdd6f4;
+    padding: 0 10px;
+    margin: 5px;
+    border-radius: 8px;
+}
+
+#custom-media.Playing {
+    color: #a6e3a1;
+}
+
+#custom-media.Paused {
+    color: #f38ba8;
+}

@@ -1,0 +1,82 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "Ubuntu", "Segoe UI", sans-serif;
+    font-size: 14px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: rgba(30, 30, 46, 1); /* vibrant peachy orange */
+    border-bottom: 3px solid rgba(203, 166, 247, 1); /* bright coral orange */
+    color: #9c0909; /* dark brown text */
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+#modules-left, #modules-center, #modules-right {
+    padding: 0 15px;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    background-color: transparent;
+    color: #cdd6f4;
+    border-bottom: 3px solid transparent;
+}
+
+#workspaces button.focused {
+    color: #ff8c69; /* bright peachy orange */
+    border-bottom: 3px solid #ff8c69;
+}
+
+#workspaces button:hover {
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow: inherit;
+    text-shadow: inherit;
+}
+
+#clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-media, #tray, #mode {
+    padding: 0 10px;
+    margin: 0 2px;
+}
+
+/* Individual Module Colors */
+#clock { color: #cba6f7; }      /* bright sky blue */
+#battery { color: #cba6f7; }    /* vibrant mint green */
+#battery.charging { color: #cba6f7; }
+#battery.critical:not(.charging) {
+    color: #cba6f7;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#cpu { color: #cba6f7; }        /* bright yellow */
+#memory { color: #cba6f7; }     /* vibrant lavender */
+#network { color: #cba6f7; }
+#pulseaudio { color: #cba6f7; } /* bright orange */
+
+@keyframes blink {
+    to { background-color: #ff8c69; color: #ffffff; }
+}
+#custom-nix-logo {
+    color: #cba6f7;
+    font-size: 20px;
+    padding: 0 10px;
+    /* This creates a "breathing" effect instead of a spin */
+    animation: nix-pulse 4s infinite alternate;
+}
+
+@keyframes nix-pulse {
+    from {
+        color: #cba6f7;
+        text-shadow: 0 0 0px rgba(255, 140, 105, 0);
+    }
+    to {
+        color: #b4befe;
+        text-shadow: 0 0 8px rgba(41, 88, 174, 0.8);
+    }
+}

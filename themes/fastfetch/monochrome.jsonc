@@ -1,0 +1,100 @@
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo": {
+        "type": "file",
+        "source": "~/.config/themes/fastfetch/monos.txt",
+        "padding": {
+            "top": 1,
+            "left": 2
+        },
+        "color": {
+            "1": "#000000",
+            "2": "#000000",
+            "3": "#000000"
+        }
+    },
+    "display": {
+        "separator": " ➜ ",
+        "color": {
+            "keys": "#000000",
+            "separator": "#000000"
+        }
+    },
+    "modules": [
+        {
+            "type": "title",
+            "format": "{user-name}@{host-name}",
+            "keyColor": "#000000"
+        },
+        {
+            "type": "separator",
+            "string": "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+        },
+        {
+            "type": "os",
+            "key": " OS",
+            "keyColor": "#000000"
+        },
+        {
+            "type": "kernel",
+            "key": " Kernel",
+            "keyColor": "#000000"
+        },
+        {
+            "type": "uptime",
+            "key": " Uptime",
+            "keyColor": "#000000"
+        },
+        {
+            "type": "separator",
+            "string": "─────────────────────────────────────"
+        },
+        {
+            "type": "wm",
+            "key": " WM",
+            "keyColor": "#000000"
+        },
+        {
+            "type": "terminal",
+            "key": " Terminal",
+            "keyColor": "#000000"
+        },
+        {
+            "type": "shell",
+            "key": " Shell",
+            "keyColor": "#000000"
+        },
+        {
+            "type": "separator",
+            "string": "─────────────────────────────────────"
+        },
+        {
+            "type": "cpu",
+            "key": " CPU",
+            "keyColor": "#000000"
+        },
+        {
+            "type": "gpu",
+            "key": "󰢮 GPU",
+            "keyColor": "#000000"
+        },
+        {
+            "type": "memory",
+            "key": " Memory",
+            "keyColor": "#000000"
+        },
+        {
+            "type": "disk",
+            "key": "󰋊 Disk",
+            "keyColor": "#000000"
+        },
+        {
+            "type": "separator",
+            "string": "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+        },
+        {
+            "type": "colors",
+            "symbol": "circle"
+        }
+    ]
+}

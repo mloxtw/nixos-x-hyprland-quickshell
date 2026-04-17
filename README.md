@@ -1,7 +1,7 @@
 Nord themed nixos x hyprland x quickshell configs 
 Just copy everything to the .config file, and u should be good
 
--adel alhagan :)
+-Adel Alhagan :)
 
 
 
